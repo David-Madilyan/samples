@@ -1,23 +1,23 @@
 package com.madpickle.education
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.madpickle.education.repo.AppDatabase
 
 class App : Application() {
-    private lateinit var instance : App
-    private lateinit var  database : AppDatabase
+    lateinit var appComponent: AppComponent
+        private set
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
-        database = Room.databaseBuilder(this, AppDatabase::class.java, "some_name").build()
+        appComponent = DaggerAppComponent.create()
     }
 
-    fun getInstance(): App {
-        return instance
-    }
-    fun getDatabase(): AppDatabase {
-        return  database
-    }
 }
+
+val Context.appComponent: AppComponent
+    get() = when (this) {
+        is App -> appComponent
+        else -> applicationContext.appComponent
+    }

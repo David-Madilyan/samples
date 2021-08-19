@@ -10,16 +10,16 @@ interface EmployeeDao {
     fun getAll() : List<Employee>
 
     @Query("SELECT * FROM Employee WHERE id = :id")
-    fun getById(id: Long): Employee?
+    fun getById(id: Long): Employee
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(employee: Employee?)
 
     @Update
     fun update(employee: Employee?)
 
     @Delete
-    fun delete(employee: Employee?)
+    fun delete(employee: Employee?) : Int
 }
 
 @Dao
@@ -27,7 +27,7 @@ interface CarDao {
     @Query("SELECT * FROM mustang_car")
     fun getAll(): List<Car>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(car: Car?)
 
     @Delete
