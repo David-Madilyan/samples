@@ -2,7 +2,7 @@ package com.madpickle.education
 
 import android.app.Application
 import com.madpickle.education.di.AppModule
-import com.madpickle.education.di.RoomModule
+import com.madpickle.education.di.DataBaseModule
 import com.madpickle.education.repo.AppDatabase
 import com.madpickle.education.repo.EmployeeDao
 import com.madpickle.education.repo.employee.EmployeeRepo
@@ -18,7 +18,6 @@ interface AppComponent {
 
     fun employeeDao(): EmployeeDao
 
-    fun appDatabase(): AppDatabase
 
     fun employeeRepository(): EmployeeRepo
 

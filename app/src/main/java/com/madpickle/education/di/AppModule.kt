@@ -7,8 +7,6 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 
-
-
 @Module(includes = [NetworkModule::class, DataBaseModule::class])
 class AppModule @Inject constructor(private var mApplication: Application){
 

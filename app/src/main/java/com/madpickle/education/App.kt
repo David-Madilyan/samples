@@ -2,8 +2,6 @@ package com.madpickle.education
 
 import android.app.Application
 import android.content.Context
-import androidx.room.Room
-import com.madpickle.education.repo.AppDatabase
 
 class App : Application() {
     lateinit var appComponent: AppComponent
